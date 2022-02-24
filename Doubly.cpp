@@ -15,21 +15,25 @@ void Doubly::InsertStart(std::string name, std::string race, int id){
         temp->next = head;
         head->prev = temp;
         head = head->prev;
+        head->prev = nullptr;
     }
 }
 
-void Doubly::Remove(int data, bool recursive){
+void Doubly::Remove(int id, bool recursive, bool recursed){
     Node * aux = head;
     bool band = true;
     while (aux && band)
     {
-        if(data == aux->data)
+        if(id == (aux->animal->id))
             band = false;
         else
             aux = aux->next;
     }
     if (aux == nullptr){
-        std::cout << "Dato no encontrado" << std::endl;
+        if (!recursed)
+        {
+            std::cout << "Dato no encontrado" << std::endl;   
+        }
         return;
     } else if (aux == tail)
     {
@@ -50,7 +54,7 @@ void Doubly::Remove(int data, bool recursive){
     }
     delete aux;
     if (recursive){
-        Remove(data, true);
+        Remove(id, true, true);
     }
 }
 
@@ -64,11 +68,11 @@ Node * Doubly::Next(int data){
     return aux->next;
 }
 
-Node * Doubly::Search(int data){
+Node * Doubly::Search(int id){
     Node * aux = head;
     if (head){
         while(aux){
-            if ((aux->data) == data){
+            if ((aux->animal->id) == id){
                 return aux;
             }
             aux = aux->next;
@@ -182,8 +186,7 @@ void Doubly::ReverseShow(){
     {
         std::cout << "Nombre: " << (aux->animal)->name << " Raza: " << aux->animal->race << " ID: " << aux->animal->id<< std::endl;
         aux = aux->prev;
-    }
-    
+    }   
 }
 
 int Doubly::Size(){

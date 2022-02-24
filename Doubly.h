@@ -9,7 +9,7 @@ public:
     void BubbleSort();
     void InsertStart(std::string name, std::string race, int id);
     void ReverseShow();
-    void Remove(int data, bool recursive = false);
+    void Remove(int data, bool recursive = false, bool recursed = false);
     void InsertEnd(std::string name, std::string race, int id);
     Node * Search(int data);
     bool IsEmpty();
