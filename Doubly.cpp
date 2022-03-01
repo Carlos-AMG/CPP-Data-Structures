@@ -1,8 +1,36 @@
 #include "Doubly.h"
 #include <iostream>
+#include <string>
 
 Doubly::Doubly(): head{nullptr}, tail{nullptr}{
 };
+
+void Doubly::PopFirst(){
+    Node * aux = head;
+    if (head->next != nullptr){
+        head = head->next;
+        head->prev = nullptr;
+        aux->next = nullptr;
+    }else{
+        tail = nullptr;
+        head = nullptr;
+    }
+    delete aux;
+}
+
+void Doubly::Pop(){
+    Node * aux = tail;
+    if (tail->prev != nullptr){
+        tail = tail->prev;
+        tail->next = nullptr;
+        aux->prev = nullptr;
+    }else{
+        tail = nullptr;
+        head = nullptr;
+    }
+    delete aux;
+}
+
 
 
 void Doubly::InsertStart(std::string name, std::string race, int id){
@@ -60,12 +88,18 @@ void Doubly::Remove(int id, bool recursive, bool recursed){
 
 Node * Doubly::Previous(int data){
     Node * aux = Search(data);
-    return aux->prev;
+    if (aux)
+        return aux->prev;
+    else
+        return nullptr;
 }
 
 Node * Doubly::Next(int data){
     Node * aux = Search(data);
-    return aux->next;
+    if (aux)
+        return aux->next;
+    else 
+        return nullptr;
 }
 
 Node * Doubly::Search(int id){
@@ -77,10 +111,8 @@ Node * Doubly::Search(int id){
             }
             aux = aux->next;
         }
-        std::cout << "Dato no encontrado" << std::endl;
         return nullptr;
     }else{
-        std::cout << "La lista esta vacia" << std::endl;
         return nullptr;
     }    
 }
@@ -141,6 +173,20 @@ void Doubly::InsertEnd(std::string name, std::string race, int id){
     } 
 }
 
+// void Doubly::InsertStart(std::string name, std::string race, int id){
+//     Node * temp = new Node(name, race, id);
+//     if (head == nullptr)
+//     {
+//         head = temp;
+//         tail = temp;
+//     }else{
+//         head->prev = temp;
+//         temp->next = head;
+//         temp->prev = nullptr;
+//         head = temp;
+//     }
+    
+// }
 
 // void Doubly::BubbleSort(){
 //     int temp_data;
@@ -199,4 +245,26 @@ int Doubly::Size(){
     }
     return nodes;
     
+}
+Node * crearAnimal(Doubly & lista, bool flag){
+    Node * aux = nullptr;
+    std::string nombre;
+    std::string raza;
+    int current_id;
+    current_id = rand() % 1000 + 1;
+    if (!lista.Search(current_id)){
+        std::cout << "Introduzca el nombre de su animal: " << std::endl;
+        std::cin >> nombre;
+        std::cout << "Introduzca la raza del animal: " << std::endl;
+        std::cin >> raza;
+        if (flag){
+            lista.InsertStart(nombre, raza, current_id);
+            aux = lista.First();
+        }else{
+            lista.InsertEnd(nombre, raza, current_id);
+            aux = lista.Last();
+        }
+        return aux;
+    }else 
+        return nullptr;
 }
