@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Node * crearAnimal(Doubly * lista, bool flag);
+// Node * crearAnimal(Doubly * lista, bool flag);
 bool Validate();
 
 
@@ -15,21 +15,30 @@ int main(){
     int size_aux;
     Doubly lista;
     Node * aux = nullptr;
-
+    bool flag1;
+    bool flag2;
     while (continuar)
     {
         cout << "----Menu-----" << endl;
         cout << "1)Crear lista\n2)Prepend\n3)Append\n4)PopFirst\n5)Pop\n6)Remove\n7)Buscar\n8)IsEmpty?" << endl;
         cout << "9)Primero\n10)Ultimo\n11)Anterior\n12)Siguiente\n13)Tamano de la lista\n14)Vaciar lista" << endl;
         cout << "15)Mostrar lista\n16)Salir del programa" << endl;
-        cout << "Introduzca su eleccion: " << endl;
+        cout << "Introduzca su eleccion: ";
         cin >> choice;
-        if (Validate())
+        flag2 = Validate();
+        if (choice == 1 && flag2){
+            system("CLS");
+            cout << "Creando lista..." << endl;
+            lista.Empty();
+            system("pause");
+            flag1 = true;
+        }
+        if (flag1 && flag2)
         {
             switch (choice)
             {
             case 1:
-                /* code */
+                continue;
                 break;
             case 2:
                 cout << "----Prepend----" << endl;
@@ -161,6 +170,7 @@ int main(){
                 break;
             case 14:
                 cout << "----Vaciar la lista----" << endl;
+                lista.Empty();
                 cout << "Vaciando la lista..." << endl;
                 getchar();
                 break;
@@ -182,29 +192,8 @@ int main(){
         }else{
             cout << "Inserte una opcion valida" << endl;
             getchar();
-        }
-        
+        }  
     }
-    // lista.InsertStart("carlos", "humano", 109);
-    // lista.InsertStart("zurdo", "humano", 2);
-    // lista.InsertStart("zurdo", "humano", 2);
-    // lista.InsertStart("zurdo", "humano", 2);
-    // lista.InsertStart("zurdo", "humano", 2);
-    // lista.InsertStart("neron", "pug", 123);
-    // lista.Remove(2, true);
-    // lista.InsertStart("test", "pug", 21);
-    // //lista.Empty();
-    // Node * primero = lista.First();
-    // Node * current = lista.Search(123);
-    // Node * ultimo = lista.Last();
-    //lista.ForwardShow();
-    // cout << lista.Size() << endl;
-    // int * ptr = nullptr;
-    // cout << "test: " << ptr << endl;
-    // cout << "head: " << lista.head << endl;
-    // cout << "first data: " << primero << endl;
-    // cout << "current data: " << current<< endl;
-    // cout << "last data: " << ultimo << endl;
     return 0;
 }
 

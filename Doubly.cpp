@@ -251,20 +251,23 @@ Node * crearAnimal(Doubly & lista, bool flag){
     std::string nombre;
     std::string raza;
     int current_id;
-    current_id = rand() % 1000 + 1;
-    if (!lista.Search(current_id)){
-        std::cout << "Introduzca el nombre de su animal: " << std::endl;
-        std::cin >> nombre;
-        std::cout << "Introduzca la raza del animal: " << std::endl;
-        std::cin >> raza;
-        if (flag){
-            lista.InsertStart(nombre, raza, current_id);
-            aux = lista.First();
-        }else{
-            lista.InsertEnd(nombre, raza, current_id);
-            aux = lista.Last();
+    
+    while (true)
+    {
+        current_id = rand() % 1000 + 1;
+        if (!lista.Search(current_id)){
+            std::cout << "Introduzca el nombre de su animal: " << std::endl;
+            std::cin >> nombre;
+            std::cout << "Introduzca la raza del animal: " << std::endl;
+            std::cin >> raza;
+            if (flag){
+                lista.InsertStart(nombre, raza, current_id);
+                aux = lista.First();
+            }else{
+                lista.InsertEnd(nombre, raza, current_id);
+                aux = lista.Last();
+            }
+            return aux;
         }
-        return aux;
-    }else 
-        return nullptr;
+    }
 }
