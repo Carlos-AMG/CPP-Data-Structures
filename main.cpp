@@ -15,10 +15,11 @@ int main(){
     int size_aux;
     Doubly lista;
     Node * aux = nullptr;
-    bool flag1;
-    bool flag2;
+    bool flag1 = false;
+    bool flag2 = false;
     while (continuar)
     {
+        system("CLS");
         cout << "----Menu-----" << endl;
         cout << "1)Crear lista\n2)Prepend\n3)Append\n4)PopFirst\n5)Pop\n6)Remove\n7)Buscar\n8)IsEmpty?" << endl;
         cout << "9)Primero\n10)Ultimo\n11)Anterior\n12)Siguiente\n13)Tamano de la lista\n14)Vaciar lista" << endl;
@@ -41,29 +42,34 @@ int main(){
                 continue;
                 break;
             case 2:
+                system("CLS");
                 cout << "----Prepend----" << endl;
                 aux = crearAnimal(lista, true);
                 cout << "Su animal es: " << endl;
                 cout << "Nombre: " << aux->animal->name << " Raza: " << aux->animal->race << " ID: " << aux->animal->id << endl;
-                getchar();
+                system("pause");
                 break;
             case 3:
+                system("CLS");
                 cout << "----Append----" << endl;
                 aux = crearAnimal(lista, false);
                 cout << "Nombre: " << aux->animal->name << " Raza: " << aux->animal->race << " ID: " << aux->animal->id << endl;
-                getchar();
+                system("pause");
                 break;
             case 4:
+                system("CLS");
                 cout << "----PopFirst----" << endl;
                 lista.PopFirst();
-                getchar();
+                system("pause");
                 break;
             case 5: 
+                system("CLS");
                 cout << "----Pop----" << endl;
                 lista.Pop();
-                getchar();
+                system("pause");
                 break;
             case 6:
+                system("CLS");
                 cout << "----Remover----" << endl;
                 cout << "Introduzca el ID del animal que quiere remover" << endl;
                 cin >> id_aux;
@@ -71,9 +77,11 @@ int main(){
                     lista.Remove(id_aux);
                 }else{
                     cout << "Por favor inserte numeros como ID, intente de nuevo" << endl;
+                    system("pause");
                 }
                 break;
             case 7:
+                system("CLS");
                 cout << "----Buscar----" << endl;
                 size_aux = lista.Size();
                 cout << "Introduzca el ID del animal que quiera buscar" << endl;
@@ -91,17 +99,19 @@ int main(){
                 }else{
                     cout << "Por favor inserte numeros como ID, intentelo de nuevo" << endl;
                 }
-                getchar();
+                system("pause");
                 break;
             case 8:
+                system("CLS");
                 cout << "----Is empty?----" << endl;
                 if (lista.IsEmpty())
                     cout << "La lista esta vacia" << endl;
                 else
                     cout << "La lista no esta vacia" << endl;
-                getchar();
+                system("pause");
                 break;
             case 9:
+                system("CLS");
                 cout << "----Primer Elemento----" << endl;
                 aux = lista.First();
                 if (aux){
@@ -110,9 +120,10 @@ int main(){
                 }else{
                     cout << "La lista esta vacia" << endl;
                 }
-                getchar();
+                system("pause");
                 break;
             case 10:
+                system("CLS");
                 cout << "----Ultimo Elemento----" << endl;
                 aux = lista.Last();
                 if (aux){
@@ -121,9 +132,10 @@ int main(){
                 }else{
                     cout << "La lista esta vacia" << endl;
                 }
-                getchar();
+                system("pause");
                 break;
             case 11:
+                system("CLS");
                 cout << "----Anterior----" << endl;
                 size_aux = lista.Size();
                 cout << "Introduzca el ID del animal al que quiera buscar su elemento anterior" << endl;
@@ -141,9 +153,10 @@ int main(){
                 }else{
                     cout << "Por favor inserte numeros como ID, intentelo de nuevo" << endl;
                 }
-                getchar();
+                system("pause");
                 break;
             case 12:
+                system("CLS");
                 cout << "----Siguiente----" << endl;
                 size_aux = lista.Size();
                 cout << "Introduzca el ID del animal al que quiera buscar su elemento siguiente " << endl;
@@ -161,37 +174,42 @@ int main(){
                 }else{
                     cout << "Por favor inserte numeros como ID, intentelo de nuevo" << endl;
                 }
-                getchar();
+                system("pause");
                 break;
             case 13: 
+                system("CLS");
                 cout << "----Tamano de la lista----" << endl;
                 cout << "La lista tiene " << lista.Size() << " elementos" << endl;
-                getchar();
+                system("pause");
                 break;
             case 14:
+                system("CLS");
                 cout << "----Vaciar la lista----" << endl;
                 lista.Empty();
                 cout << "Vaciando la lista..." << endl;
-                getchar();
+                system("pause");
                 break;
             case 15:
+                system("CLS");
                 cout << "----Mostrar lista----" << endl;
                 lista.ForwardShow();
-                getchar();
+                system("pause");
                 break;
             case 16:
+                system("CLS");
                 cout << "Saliendo del programa..." << endl;
                 continuar = false;
-                getchar();
+                system("pause");
                 break;
             default:
+                system("CLS");
                 cout << "Por favor eliga una opcion valida" << endl;
-                getchar();
+                system("pause");
                 break;
             }
         }else{
-            cout << "Inserte una opcion valida" << endl;
-            getchar();
+            cout << "No posible hacer operaciones sin antes crear una lista" << endl;
+            system("pause");
         }  
     }
     return 0;
